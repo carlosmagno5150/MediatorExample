@@ -1,13 +1,11 @@
-﻿
-using Domain.Commands;
+﻿using Domain.Commands;
 using FluentValidation;
-using FluentValidation.Results;
 
 namespace Domain.Validation
 {
-    public class CriarUsuarioCommandValidation : AbstractValidator<CriarUsuarioCommand>
+    public class CriarUsuarioValidation : AbstractValidator<CriarUsuario>
     {
-        public CriarUsuarioCommandValidation()
+        public CriarUsuarioValidation()
         {
             RuleFor(x => x.Id)
                 .NotEmpty();
@@ -15,5 +13,4 @@ namespace Domain.Validation
                 .NotEmpty();
         }
     }
-
 }

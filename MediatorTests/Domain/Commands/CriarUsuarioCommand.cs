@@ -1,18 +1,22 @@
-﻿using Domain.Model;
-using Domain.Validation;
-using MediatR;
+﻿using Domain.Validation;
+using FluentValidation;
+using Project.Cqrs.Commands;
 
 namespace Domain.Commands
 {
-    public class CriarUsuarioCommand: IRequest<ResponseResult>
+    // ReSharper disable IdentifierTypo
+    public class CriarUsuario : ValidatableCommand
+
     {
         public int Id { get; set; }
         public string Nome { get; set; }
 
-        public CriarUsuarioCommand(int id, string nome)
+        public CriarUsuario(int id, string nome)
         {
             Id = id;
             Nome = nome;
         }
+
+        protected override IValidator Validator => new CriarUsuarioValidation();
     }
 }

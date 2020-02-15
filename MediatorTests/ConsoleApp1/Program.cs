@@ -17,10 +17,11 @@ namespace ConsoleApp1
         public static ServiceProvider Configure()
         {
             return new ServiceCollection()
-                .AddMediatR(typeof(Program).Assembly, typeof(CriarUsuarioCommand).Assembly)
+                .AddMediatR(typeof(Program).Assembly, typeof(CriarUsuario).Assembly)
                 .AddScoped<Initiator>()
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>))
-                .AddValidatorsFromAssembly(typeof(CriarUsuarioCommandValidation).Assembly)
+                .AddValidatorsFromAssembly(typeof(CriarUsuarioValidation).Assembly)
+                .AddScoped<>
                 .AddSingleton<ILogger>(s=> new LoggerConfiguration()
                     .WriteTo.Console()
                     .WriteTo.File("C:\\Log\\log-.txt", rollingInterval: RollingInterval.Day)
