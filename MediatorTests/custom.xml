@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Include ILogger</Title>
+      <Shortcut>clog</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>classname</ID>
+          <ToolTip>Class name</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>ClassNamePlaceholder</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[
+		private readonly ILogger _logger; 
+		private readonly IMessageBus _bus;
+		public $classname$ (ILogger logger, IMessageBus bus)
+	{
+		_logger = logger;
+		_bus = bus;
+		$end$
+	}]]>
+      </Code>
+      <Imports>
+        <!-- <Import> -->
+        <!-- <Namespace>MediatR</Namespace>  -->
+        <!-- </Import> -->
+        <Import>
+          <Namespace>Serilog</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
