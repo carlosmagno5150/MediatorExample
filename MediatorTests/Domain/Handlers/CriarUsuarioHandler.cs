@@ -5,6 +5,7 @@ using Serilog;
 using System.Threading;
 using System.Threading.Tasks;
 using Domain.Events;
+using Project.Cqrs.DomainNotification;
 
 // ReSharper disable IdentifierTypo
 
@@ -25,6 +26,7 @@ namespace Domain.Handlers
         {
             _logger.Information("Handling command");
             await _messageBus.RaiseEvent(new UsuarioCriado("Usuario", "Criado"));
+            await _messageBus.RaiseEvent(new DomainNotification("myKey", "chum"));
             return await Unit.Task;
         }
     }

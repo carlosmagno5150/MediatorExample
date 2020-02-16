@@ -7,9 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{953A5421-3AF6-460C-8E63-C368D75862B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Cqrs", "Project.Cqrs\Project.Cqrs.csproj", "{4A13F14B-BF3E-4EDE-8E5C-5F0507F5B668}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.Cqrs", "Project.Cqrs\Project.Cqrs.csproj", "{4A13F14B-BF3E-4EDE-8E5C-5F0507F5B668}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.RabbitMQ", "Project.RabbitMQ\Project.RabbitMQ.csproj", "{FA4675CC-D1CD-4E19-B4D7-D0A172EFB380}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Project.RabbitMQ", "Project.RabbitMQ\Project.RabbitMQ.csproj", "{FA4675CC-D1CD-4E19-B4D7-D0A172EFB380}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNetQConsole", "EasyNetQConsole\EasyNetQConsole.csproj", "{2FCA43FB-1D57-4CA9-9CAF-C5EC3E7F5743}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{81D3C2BC-0CD3-49AE-AA45-2F207DC84485}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyNetQDomain", "EasyNetQDomain\EasyNetQDomain.csproj", "{05F39E90-6C7B-42DF-9321-C8135F0BCAE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,23 @@ Global
 		{FA4675CC-D1CD-4E19-B4D7-D0A172EFB380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA4675CC-D1CD-4E19-B4D7-D0A172EFB380}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA4675CC-D1CD-4E19-B4D7-D0A172EFB380}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCA43FB-1D57-4CA9-9CAF-C5EC3E7F5743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCA43FB-1D57-4CA9-9CAF-C5EC3E7F5743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCA43FB-1D57-4CA9-9CAF-C5EC3E7F5743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCA43FB-1D57-4CA9-9CAF-C5EC3E7F5743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05F39E90-6C7B-42DF-9321-C8135F0BCAE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05F39E90-6C7B-42DF-9321-C8135F0BCAE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05F39E90-6C7B-42DF-9321-C8135F0BCAE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05F39E90-6C7B-42DF-9321-C8135F0BCAE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C8EC178-8DA2-4E6E-BDED-4D0ADCDA7072} = {81D3C2BC-0CD3-49AE-AA45-2F207DC84485}
+		{953A5421-3AF6-460C-8E63-C368D75862B0} = {81D3C2BC-0CD3-49AE-AA45-2F207DC84485}
+		{4A13F14B-BF3E-4EDE-8E5C-5F0507F5B668} = {81D3C2BC-0CD3-49AE-AA45-2F207DC84485}
+		{FA4675CC-D1CD-4E19-B4D7-D0A172EFB380} = {81D3C2BC-0CD3-49AE-AA45-2F207DC84485}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7BD09229-B5C9-4763-9858-D6FCDD2912CA}

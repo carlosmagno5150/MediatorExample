@@ -1,10 +1,9 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using MediatR;
 
 namespace Project.Cqrs.DomainNotification
 {
@@ -38,14 +37,12 @@ namespace Project.Cqrs.DomainNotification
 
         public void Dispose()
         {
-
             Dispose(true);
             GC.SuppressFinalize(this);
         }
 
         protected virtual void Dispose(bool disposing)
         {
-
             if (_disposed) { return; }
 
             if (disposing)

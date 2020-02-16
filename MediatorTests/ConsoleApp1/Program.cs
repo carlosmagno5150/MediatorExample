@@ -7,6 +7,8 @@ using Domain.Validation;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using Project.Cqrs.DomainNotification;
+using Project.Cqrs.Messages;
 using Serilog;
 using Serilog.Core;
 
@@ -17,11 +19,14 @@ namespace ConsoleApp1
         public static ServiceProvider Configure()
         {
             return new ServiceCollection()
-                .AddMediatR(typeof(Program).Assembly, typeof(CriarUsuario).Assembly)
+                .AddMediatR(typeof(Program).Assembly, 
+                typeof(CriarUsuario).Assembly,
+                typeof(DomainNotificationHandler).Assembly)
+                .AddScoped<IMessageBus, MessageBus>()// IEventBus
                 .AddScoped<Initiator>()
+                .AddSingleton<DomainNotificationHandler>()
                 .AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>))
                 .AddValidatorsFromAssembly(typeof(CriarUsuarioValidation).Assembly)
-                .AddScoped<>
                 .AddSingleton<ILogger>(s=> new LoggerConfiguration()
                     .WriteTo.Console()
                     .WriteTo.File("C:\\Log\\log-.txt", rollingInterval: RollingInterval.Day)
@@ -45,20 +50,25 @@ namespace ConsoleApp1
     {
         private IMediator _mediator;
         private ILogger _logger;
+        private DomainNotificationHandler _domainNotification;
 
-        public Initiator(IMediator mediator, ILogger logger)
+        public Initiator(IMediator mediator, ILogger logger, DomainNotificationHandler dn)
         {
             _mediator = mediator;
             _logger = logger;
+            _domainNotification = dn;
         }
 
         public void Go()
         {
-            var cmd = new CriarUsuarioCommand(1, "Usuario");
+            var cmd = new CriarUsuario(1, "Usuario");
             _logger.Information("sending to mediator");
+            var has = _domainNotification.HasNotifications();
             var result = Task.Run(()=>  _mediator.Send(cmd));
             result.Wait();
-            _logger.Information($"result: {result.Result.Success}");
+            _logger.Information($"Usuario criado");
+             has = _domainNotification.HasNotifications();
+
         }
     }
 }

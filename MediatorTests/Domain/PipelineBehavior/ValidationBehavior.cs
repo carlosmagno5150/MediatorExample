@@ -14,24 +14,15 @@ namespace Domain.PipelineBehavior
     where TRequest: IRequest<TResponse>
     {
         private readonly ILogger _logger;
-        private readonly IEnumerable<IValidator<TRequest>> _validators;
 
-        public ValidationBehavior(ILogger logger,  IEnumerable<IValidator<TRequest>> validators)
+        public ValidationBehavior(ILogger logger)
         {
             _logger = logger;
-            _validators = validators;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
             _logger.Information("Pre validation");
-
-            var context = new ValidationContext(request);
-            var failures =
-                _validators.Select(x =>
-                    x.Validate(context))
-                    .Select(x=>x.Errors).ToList();
-
             var r = await next();
             _logger.Information("post-validation");
             return r;
